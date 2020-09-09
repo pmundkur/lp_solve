@@ -1250,14 +1250,14 @@ MYBOOL __WINAPI get_ptr_sensitivity_objex(lprec *lp, REAL **objfrom, REAL **objt
       *objtill = lp->objtill + 1;
   }
 
-  if((objfromvalue != NULL) /* || (objtillvalue != NULL) */) {
-    if((lp->objfromvalue == NULL) /* || (lp->objtillvalue == NULL) */) {
+  if(objfromvalue != NULL /* || (objtillvalue != NULL) */) {
+    if(lp->objfromvalue == NULL /* || (lp->objtillvalue == NULL) */) {
       if((MIP_count(lp) > 0) && (lp->bb_totalnodes > 0)) {
         report(lp, CRITICAL, "get_ptr_sensitivity_objex: Sensitivity unknown\n");
         return(FALSE);
       }
       construct_sensitivity_duals(lp);
-      if((lp->objfromvalue == NULL) /* || (lp->objtillvalue == NULL) */)
+      if(lp->objfromvalue == NULL /* || (lp->objtillvalue == NULL) */)
         return(FALSE);
     }
   }
